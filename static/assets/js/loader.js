@@ -79,7 +79,7 @@ searchBar.addEventListener("keydown", function(event) {
 				if (domainRegex.test(searchValue)) {
 					scope = '/assignments/';
 				} else {
-					scope = '/service/';
+					scope = '/studentrecords/';
 				}
 			} else {
 				scope = '/assignments/';
