@@ -24,7 +24,7 @@ window.onload = function() {
 			wisp: wispUrl
 		}]);
 		await window.navigator.serviceWorker.register("/sw.js", {
-			scope: '/service/',
+			scope: '/studentrecords/',
 		});
 		await window.navigator.serviceWorker.register("/lab.js", {
 			scope: '/assignments/',
@@ -49,7 +49,7 @@ window.onload = function() {
 			if (domainRegex.test(searchValue)) {
 				scope = '/assignments/';
 			} else {
-				scope = '/service/';
+				scope = '/studentrecords/';
 			}
 		} else {
 			scope = '/assignments/';
