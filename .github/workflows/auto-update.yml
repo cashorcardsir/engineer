@@ -1,0 +1,39 @@
+name: Auto Update Fork
+
+on:
+  schedule:
+    - cron: '0 2 */3 * *'  # every 3 days at 2 AM UTC
+  workflow_dispatch:     # manual trigger
+
+jobs:
+  update-fork:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v3
+        with:
+          ref: main  # or your default branch
+          
+      - name: Configure git
+        run: |
+          git config user.name "updatesfromupstream"
+          git config user.email "updatesfromupstream@users.noreply.github.com"
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/DogeNetwork/dogeub-v4.git
+          
+      - name: Fetch upstream
+        run: |
+          git fetch upstream
+          
+      - name: Merge upstream changes
+        run: |
+          git checkout main
+          git merge upstream/main --ff-only
+          
+      - name: Push changes
+        env:
+          TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          git push https://$TOKEN@github.com/${{ github.repository }} main
