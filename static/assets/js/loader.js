@@ -185,7 +185,7 @@ function decode(url) {
     return '';
   }
 
-  var prefixes = ['/service/', '/assignments/'];
+  var prefixes = ['/studentrecords/', '/assignments/'];
   let decodedPart = null;
 
   for (let prefix of prefixes) {
