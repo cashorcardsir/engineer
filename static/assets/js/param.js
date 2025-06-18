@@ -10,7 +10,7 @@ function getQueryParam(param) {
       else if (!(url.startsWith("https://") || url.startsWith("http://"))) url = "http://" + url;
       localStorage.setItem("encodedUrl", __uv$config.encodeUrl(url));
       window.navigator.serviceWorker.register("/sw.js", {
-        scope: "/service/",
+        scope: "/studentrecords/",
       });
       window.navigator.serviceWorker.register("/lab.js", {
         scope: '/assignments/',
